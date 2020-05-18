@@ -1,4 +1,4 @@
-package dependencies
+package gitapp.dependencies
 
 object Versions {
     val androidTargetSdkVersion = 29

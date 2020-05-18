@@ -1,5 +1,4 @@
-
-import dependencies.Dep
+import gitapp.dependencies.Dep
 
 apply from: rootProject.file('gradle/android.gradle')
 

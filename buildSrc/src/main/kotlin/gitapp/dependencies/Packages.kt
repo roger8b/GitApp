@@ -1,4 +1,4 @@
-package dependencies
+package gitapp.dependencies
 
 object Packages {
     const val name = "com.rms.gitapp"
