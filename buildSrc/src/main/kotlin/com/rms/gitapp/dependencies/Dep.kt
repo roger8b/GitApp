@@ -1,4 +1,4 @@
-package gitapp.dependencies
+package com.rms.gitapp.dependencies
 
 object Dep {
 
