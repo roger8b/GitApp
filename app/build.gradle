@@ -2,6 +2,7 @@ import com.rms.gitapp.dependencies.Dep
 import com.rms.gitapp.dependencies.Packages
 
 apply plugin: 'com.rms.gitapp.appcommon'
+apply from: rootProject.file('gradle/ktlint.gradle')
 
 android {
     defaultConfig {

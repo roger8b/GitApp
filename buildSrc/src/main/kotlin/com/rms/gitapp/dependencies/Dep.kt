@@ -38,4 +38,8 @@ object Dep {
     object OkHttp {
 
     }
+
+    object CodeQuality {
+        val ktlint = "com.pinterest:ktlint:0.36.0"
+    }
 }
