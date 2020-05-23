@@ -31,7 +31,7 @@ internal fun Project.configureAndroid(extension: AppCommonExtension) =
         buildToolsVersion(Versions.androidBuildToolVersion)
 
         defaultConfig {
-            //applicationId = extension.packageName
+            // applicationId = extension.packageName
             minSdkVersion(Versions.androidMinSdkVersion)
             targetSdkVersion(Versions.androidTargetSdkVersion)
             versionCode = Versions.androidVersionCode
@@ -56,6 +56,6 @@ internal fun Project.configureAndroid(extension: AppCommonExtension) =
     }
 
 open class AppCommonExtension {
+
     var packageName: String = ""
 }
-
