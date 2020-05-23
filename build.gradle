@@ -2,6 +2,7 @@ import com.rms.gitapp.dependencies.Dep
 
 apply from: file('gradle/dependencyGraph.gradle')
 apply from: file('gradle/ktlint.gradle')
+apply from: file('quality/detekt/detekt.gradle')
 
 
 buildscript {
@@ -13,6 +14,7 @@ buildscript {
     dependencies {
         classpath Dep.GradlePlugin.gradle
         classpath Dep.GradlePlugin.kotlinGradlePlugin
+        classpath Dep.CodeQuality.Detekt.detekt
     }
 }
 
