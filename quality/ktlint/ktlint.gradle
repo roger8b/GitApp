@@ -9,13 +9,15 @@ dependencies {
 }
 
 task ktlint(type: JavaExec, group: "verification") {
+    logger.trace("Start Ktlint Check Task")
     def parameters = [
             "--android",
             "--reporter=checkstyle,output=${buildDir}/ktlint/checkstyle.xml",
-            "--reporter=html,output=${buildDir}/ktlint/checkstyle.html"
+            "--reporter=html,output=${buildDir}/ktlint/checkstyle.html",
+            "**/src/*.gradle.kts",
+            "**/src/**/*.kt",
+            "**/*.gradle.kts",
     ]
-
-    parameters += ['src/**/*.kt', '**/*.gradle.kts']
 
     description = 'Check Kotlin code style.'
     args = parameters
@@ -24,8 +26,15 @@ task ktlint(type: JavaExec, group: "verification") {
 }
 
 task ktlintFormat(type: JavaExec, group: "formatting") {
+    def parameters = [
+            "--android",
+            "-F",
+            "**/src/*.gradle.kts",
+            "**/src/**/*.kt",
+            "**/*.gradle.kts",
+    ]
     description = "Format Kotlin files based on code style."
     classpath = configurations.ktlint
     main = 'com.pinterest.ktlint.Main'
-    args '--android', '-F', 'src/**/*.kt', '**/*.gradle.kts'
+    args = parameters
 }
