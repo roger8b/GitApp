@@ -1,0 +1,41 @@
+import com.rms.gitapp.dependencies.Dep
+
+apply plugin: "io.gitlab.arturbosch.detekt"
+
+detekt {
+    idea {
+        path = "$rootDir/.idea/"
+        codeStyleScheme = "$rootDir/quality/detekt/idea/code-style.xml"
+        inspectionsProfile = "$rootDir/quality/detekt/idea/inspect.xml"
+        report = "$rootDir/quality/detekt/reports"
+        mask = "*.kt,"
+    }
+
+    input = files("$projectDir")
+    config = files("$rootDir/quality/detekt/detekt.yml")
+    baseline = file("$rootDir/quality/detekt/detekt-baseline.xml")
+
+    parallel = true
+    ignoreFailures = false
+    debug = true
+
+    reports {
+        xml {
+            enabled = true
+            destination = file("$rootDir/quality/detekt/reports/detekt.xml")
+        }
+        html {
+            enabled = true
+            destination = file("$rootDir/quality/detekt/reports/detekt.html")
+        }
+        txt {
+            enabled = true
+            destination = file("$rootDir/quality/detekt/reports/detekt.txt")
+        }
+    }
+}
+
+dependencies {
+    detektPlugins Dep.CodeQuality.Detekt.detektFormatting
+    detektPlugins Dep.CodeQuality.Detekt.detektCli
+}
