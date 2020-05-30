@@ -1,6 +1,8 @@
 name: 🚧 Danger
 
 on:
+  repository_dispatch:
+    types: run-danger
   pull_request:
     types: [opened, reopened, edited, synchronize]
 
