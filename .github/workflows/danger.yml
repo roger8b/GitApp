@@ -1,4 +1,4 @@
-name: 🚧 Danger
+name: Danger
 
 on:
   repository_dispatch:
@@ -7,7 +7,7 @@ on:
     types: [opened, reopened, edited, synchronize]
 
 jobs:
-  build:
+  job-danger:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -17,17 +17,19 @@ jobs:
           ruby-version: '2.6'
       - name: Check Ruby Version
         run: |
-          ruby -v    
+          ruby --version
+          gem --version
+          bundler --version
       - uses: actions/cache@v1
         with:
-          path: .ci
+          path: vendor/cache
           key: ${{ runner.os }}-gems-${{ hashFiles('**/Gemfile.lock') }}
           restore-keys: |
             ${{ runner.os }}-gems-
       - name: Bundle install
         run: |
           gem install bundler
-          bundle config path .ci
+          bundle config path vendor/cache
           bundle install --jobs 4 --retry 3
       - name: Run danger
         run: |
