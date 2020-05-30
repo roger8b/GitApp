@@ -1,34 +1,43 @@
-name: 🚧 Danger
+name: Danger
 
 on:
+  push:
+    branches: [ develop, master ]
+  repository_dispatch:
+    types: run-danger
   pull_request:
     types: [opened, reopened, edited, synchronize]
 
 jobs:
   build:
+    name: Danger
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
       - name: Set up ruby 2.6.3
-        uses: actions/setup-ruby@v1
+        uses: ruby/setup-ruby@v1
         with:
-          ruby-version: '2.6'
+          ruby-version: 2.6
       - name: Check Ruby Version
         run: |
-          ruby -v    
+          ruby --version
+          gem --version
+          bundler --version
       - uses: actions/cache@v1
         with:
-          path: vendor/bundle
+          path: vendor/cache
           key: ${{ runner.os }}-gems-${{ hashFiles('**/Gemfile.lock') }}
           restore-keys: |
             ${{ runner.os }}-gems-
       - name: Bundle install
         run: |
+          cd .ci
           gem install bundler
-          bundle config path vendor/bundle
+          bundle config path vendor/cache
           bundle install --jobs 4 --retry 3
       - name: Run danger
         run: |
+          cd .ci/danger
           bundle exec danger
         env:
           DANGER_GITHUB_API_TOKEN: ${{ secrets.GITHUB_TOKEN }}
