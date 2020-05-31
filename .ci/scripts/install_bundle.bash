@@ -10,5 +10,6 @@ gem --version
 bundler --version
 
 echo "##### Install bundle"
-bundle config path vendor/cache
+gem install bundler
+bundle config path 'vendor/cache'
 bundle install --jobs 4 --retry 3 --gemfile=.ci/Gemfile
