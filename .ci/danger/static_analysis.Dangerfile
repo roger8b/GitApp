@@ -6,5 +6,5 @@ ktlint.lint
 #Detekt config
 kotlin_detekt.severity = "warning"
 kotlin_detekt.gradle_task = "detekt"
-kotlin_detekt.report_file = "quality/detekt.xml"
+kotlin_detekt.report_file = "../../quality/detekt/reports/detekt.xml"
 kotlin_detekt.detekt
