@@ -22,7 +22,7 @@ detekt {
     reports {
         xml {
             enabled = true
-            destination = file("$rootDir/quality/detekt/reports/detekt.xml")
+            //destination = file("$rootDir/quality/detekt/reports/detekt.xml")
         }
         html {
             enabled = true
