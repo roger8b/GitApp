@@ -33,7 +33,7 @@ jobs:
     - name: Run Bash
       run: .ci/scripts/run.bash
 
-    - Name: Check Reports
+    - name: Check Reports
       run: ls quality/detekt/reports
 
     env:
