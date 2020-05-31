@@ -24,33 +24,33 @@ jobs:
     - name: Run Detekt
       run: ./gradlew detekt
 
+    - name: Install Ruby
+      uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: 2.6
+
+    - name: Vendor Cache
+      uses: actions/cache@v1
+      id: vendor-cache
+      with:
+        path: vendor/cache
+        key: ${{ runner.os }}-gems-${{ hashFiles('**/Gemfile.lock') }}
+        restore-keys: |
+          ${{ runner.os }}-gems-
+
+    - name: Install Bundle
+      run: .ci/scripts/install_bundle.bash
+
+    - name: Run Bash
+
+      run: |
+        ls -l
+        .ci/scripts/run.bash
+
     - name: Check Reports
       run: ls quality/detekt/reports
 
-#    - name: Install Ruby
-#      uses: ruby/setup-ruby@v1
-#      with:
-#        ruby-version: 2.6
-#
-#    - name: Vendor Cache
-#      uses: actions/cache@v1
-#      id: vendor-cache
-#      with:
-#        path: vendor/cache
-#        key: ${{ runner.os }}-gems-${{ hashFiles('**/Gemfile.lock') }}
-#        restore-keys: |
-#          ${{ runner.os }}-gems-
-#
-#    - name: Install Bundle
-#      run: .ci/scripts/install_bundle.bash
-#
-#    - name: Run Bash
-#      run: .ci/scripts/run.bash
-#
-#    - name: Check Reports
-#      run: ls quality/detekt/reports
-#
-#    env:
-#      DANGER_GITHUB_API_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    env:
+      DANGER_GITHUB_API_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       
       
