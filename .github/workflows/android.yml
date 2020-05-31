@@ -13,6 +13,14 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
+
+    - name: Set up JDK 1.8
+      uses: actions/setup-java@v1
+      with:
+        java-version: 1.8
+    - name: Grant execute permission for gradlew
+      run: chmod +x gradlew
+
     - name: Install Ruby
       uses: ruby/setup-ruby@v1
       with:
@@ -30,8 +38,11 @@ jobs:
     - name: Install Bundle
       run: .ci/scripts/install_bundle.bash
 
-    - name: Run Bash
+    - name: Run Quality Tools
       run: .ci/scripts/run.bash
+
+    - name: Check Reports
+      run: ls quality/detekt/reports
 
     env:
       DANGER_GITHUB_API_TOKEN: ${{ secrets.GITHUB_TOKEN }}
