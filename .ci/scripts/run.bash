@@ -6,6 +6,7 @@ echo "##### Install Ktlint"
 # brew install ktlint
 sudo apt-get install tree
 cd ..
+cd ..
 tree
 
 echo "##### Execute Danger"
