@@ -9,13 +9,9 @@ ruby --version
 gem --version
 bundler --version
 
-echo "Move Gemfile"
-mv .ci/Gemfile vendor/cache
-ls vendor/cache
-
 echo "Install bundle"
 bundle config path vendor/cache
-bundle install --jobs 4 --retry 3
+bundle install --jobs 4 --retry 3 --gemfile=.ci/Gemfile
 
 echo "Execute Danger"
 
