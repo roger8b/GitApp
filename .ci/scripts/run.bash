@@ -10,8 +10,6 @@ gem --version
 bundler --version
 
 echo "Install bundle"
-gem install bundler
-bundle config path vendor/cache
 bundle install --jobs 4 --retry 3
 
 echo "Execute Danger"
