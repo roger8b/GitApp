@@ -15,12 +15,20 @@ jobs:
       uses: ruby/setup-ruby@v1
       with:
         ruby-version: 2.6
+
+    - name: Vendor Cache
+    - id: vendor-cache
     - uses: actions/cache@v1
       with:
         path: vendor/cache
         key: ${{ runner.os }}-gems-${{ hashFiles('**/Gemfile.lock') }}
         restore-keys: |
           ${{ runner.os }}-gems-
+
+    - name: Install Bundle
+      - if: steps.vendor-cache.outputs.cache-hit != 'true'
+      - run: .ci/scripts/install_bundle.bash
+
     - name: Run Bash
       run: .ci/scripts/run.bash
       
