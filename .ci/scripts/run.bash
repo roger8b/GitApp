@@ -9,6 +9,11 @@ ruby --version
 gem --version
 bundler --version
 
+echo "Install bundle"
+gem install bundler
+bundle config path vendor/cache
+bundle install --jobs 4 --retry 3
+
 echo "Execute Danger"
 
 #bundle exec --gemfile=.ci/Gemfile danger --dangerfile=".ci/danger/static_analysis.Dangerfile" --danger_id='static_analysis' --remove-previous-comments --fail-on-errors=true
