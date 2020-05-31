@@ -31,11 +31,13 @@ jobs:
             ${{ runner.os }}-gems-
       - name: Bundle install
         run: |
+          cd .ci
           gem install bundler
           bundle config path vendor/cache
           bundle install --jobs 4 --retry 3
       - name: Run danger
         run: |
+          cd danger
           bundle exec danger
         env:
           DANGER_GITHUB_API_TOKEN: ${{ secrets.GITHUB_TOKEN }}
