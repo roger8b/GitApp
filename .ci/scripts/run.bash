@@ -10,7 +10,8 @@ gem --version
 bundler --version
 
 echo "Install bundle"
-bundle install --path .ci --jobs 4 --retry 3
+bundle config set path '.ci'
+bundle install --jobs 4 --retry 3
 
 echo "Execute Danger"
 
