@@ -26,8 +26,8 @@ jobs:
           ${{ runner.os }}-gems-
 
     - name: Install Bundle
-      - if: steps.vendor-cache.outputs.cache-hit != 'true'
-      - run: .ci/scripts/install_bundle.bash
+      if: steps.vendor-cache.outputs.cache-hit != 'true'
+      run: .ci/scripts/install_bundle.bash
 
     - name: Run Bash
       run: .ci/scripts/run.bash
