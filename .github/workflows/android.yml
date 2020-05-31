@@ -22,8 +22,6 @@ jobs:
       with:
         path: vendor/cache
         key: ${{ runner.os }}-gems-${{ hashFiles('**/Gemfile.lock') }}
-        restore-keys: |
-          ${{ runner.os }}-gems-
 
     - name: Install Bundle
       if: steps.vendor-cache.outputs.cache-hit != 'true'
