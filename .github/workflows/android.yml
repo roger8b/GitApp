@@ -17,8 +17,8 @@ jobs:
         ruby-version: 2.6
 
     - name: Vendor Cache
-    - id: vendor-cache
-    - uses: actions/cache@v1
+      uses: actions/cache@v1
+      id: vendor-cache
       with:
         path: vendor/cache
         key: ${{ runner.os }}-gems-${{ hashFiles('**/Gemfile.lock') }}
