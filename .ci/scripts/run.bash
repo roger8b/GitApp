@@ -4,8 +4,6 @@ set -euo pipefail
 
 echo "##### Install Ktlint"
 # brew install ktlint
-sudo apt-get install tree
-tree /
 
 echo "##### Execute Danger"
 bundle exec --gemfile=.ci/Gemfile danger --dangerfile=".ci/danger/static_analysis.Dangerfile" --danger_id='static_analysis' --remove-previous-comments --fail-on-errors=false
