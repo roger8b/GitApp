@@ -4,6 +4,7 @@ set -euo pipefail
 
 echo "##### Install Ktlint"
 # brew install ktlint
+apt-get install tree
 tree
 
 echo "##### Execute Danger"
