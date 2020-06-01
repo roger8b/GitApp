@@ -28,14 +28,16 @@ jobs:
 
     - name: Gradle wrapper Cache
       uses: actions/cache@v1
-        path: ~./gradle/wrapper
+      with:
+        path: ~/.gradle/wrapper
         key: ${{ runner.os }}-gradle-wrapper-${{ hashFiles('gradle/wrapper/gradle-wrapper.properties') }}
         restore-keys: |
           ${{ runner.os }}-gradle-wrapper-
 
     - name: Gradle Caches
         uses: actions/cache@v1
-          path: ~./gradle/caches
+        with:
+          path: ~/.gradle/caches
           key: ${{ runner.os }}-gradle-wrapper-${{ hashFiles('gradle/wrapper/gradle-wrapper.properties') }}
           restore-keys: |
             ${{ runner.os }}-gradle-wrapper-
