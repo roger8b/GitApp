@@ -57,6 +57,9 @@ jobs:
     - name: Run Quality Tools
       run: .ci/scripts/run.bash
 
+    - name: Check Reports
+      run: ls quality/detekt/reports
+
     env:
       DANGER_GITHUB_API_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       
