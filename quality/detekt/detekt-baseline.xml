@@ -1,5 +1,7 @@
 <?xml version="1.0" ?>
 <SmellBaseline>
   <Blacklist></Blacklist>
-  <Whitelist></Whitelist>
+  <Whitelist>
+    <ID>MemberNameEqualsClassName:Dep.kt$Dep.CodeQuality.Detekt$const val detekt = "io.gitlab.arturbosch.detekt:detekt-gradle-plugin:1.9.1"</ID>
+  </Whitelist>
 </SmellBaseline>
